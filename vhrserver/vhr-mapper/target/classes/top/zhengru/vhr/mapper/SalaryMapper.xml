@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.zhengru.vhr.mapper.SalaryMapper">
+
+    <resultMap id="BaseResultMap" type="top.zhengru.vhr.model.Salary">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="basicSalary" column="basicSalary" jdbcType="INTEGER"/>
+            <result property="bonus" column="bonus" jdbcType="INTEGER"/>
+            <result property="lunchSalary" column="lunchSalary" jdbcType="INTEGER"/>
+            <result property="trafficSalary" column="trafficSalary" jdbcType="INTEGER"/>
+            <result property="allSalary" column="allSalary" jdbcType="INTEGER"/>
+            <result property="pensionBase" column="pensionBase" jdbcType="INTEGER"/>
+            <result property="pensionPer" column="pensionPer" jdbcType="FLOAT"/>
+            <result property="createDate" column="createDate" jdbcType="TIMESTAMP"/>
+            <result property="medicalBase" column="medicalBase" jdbcType="INTEGER"/>
+            <result property="medicalPer" column="medicalPer" jdbcType="FLOAT"/>
+            <result property="accumulationFundBase" column="accumulationFundBase" jdbcType="INTEGER"/>
+            <result property="accumulationFundPer" column="accumulationFundPer" jdbcType="FLOAT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,basicSalary,bonus,
+        lunchSalary,trafficSalary,allSalary,
+        pensionBase,pensionPer,createDate,
+        medicalBase,medicalPer,accumulationFundBase,
+        accumulationFundPer,name
+    </sql>
+    <insert id="insertSelective" parameterType="top.zhengru.vhr.model.Salary">
+        insert into salary
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="basicSalary != null">
+                basicSalary,
+            </if>
+            <if test="bonus != null">
+                bonus,
+            </if>
+            <if test="lunchSalary != null">
+                lunchSalary,
+            </if>
+            <if test="trafficSalary != null">
+                trafficSalary,
+            </if>
+            <if test="allSalary != null">
+                allSalary,
+            </if>
+            <if test="pensionBase != null">
+                pensionBase,
+            </if>
+            <if test="pensionPer != null">
+                pensionPer,
+            </if>
+            <if test="createDate != null">
+                createDate,
+            </if>
+            <if test="medicalBase != null">
+                medicalBase,
+            </if>
+            <if test="medicalPer != null">
+                medicalPer,
+            </if>
+            <if test="accumulationFundBase != null">
+                accumulationFundBase,
+            </if>
+            <if test="accumulationFundPer != null">
+                accumulationFundPer,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="basicSalary != null">
+                #{basicSalary,jdbcType=INTEGER},
+            </if>
+            <if test="bonus != null">
+                #{bonus,jdbcType=INTEGER},
+            </if>
+            <if test="lunchSalary != null">
+                #{lunchSalary,jdbcType=INTEGER},
+            </if>
+            <if test="trafficSalary != null">
+                #{trafficSalary,jdbcType=INTEGER},
+            </if>
+            <if test="allSalary != null">
+                #{allSalary,jdbcType=INTEGER},
+            </if>
+            <if test="pensionBase != null">
+                #{pensionBase,jdbcType=INTEGER},
+            </if>
+            <if test="pensionPer != null">
+                #{pensionPer,jdbcType=REAL},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="medicalBase != null">
+                #{medicalBase,jdbcType=INTEGER},
+            </if>
+            <if test="medicalPer != null">
+                #{medicalPer,jdbcType=REAL},
+            </if>
+            <if test="accumulationFundBase != null">
+                #{accumulationFundBase,jdbcType=INTEGER},
+            </if>
+            <if test="accumulationFundPer != null">
+                #{accumulationFundPer,jdbcType=REAL},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="top.zhengru.vhr.model.Salary">
+        update salary
+        <set>
+            <if test="basicSalary != null">
+                basicSalary = #{basicSalary,jdbcType=INTEGER},
+            </if>
+            <if test="bonus != null">
+                bonus = #{bonus,jdbcType=INTEGER},
+            </if>
+            <if test="lunchSalary != null">
+                lunchSalary = #{lunchSalary,jdbcType=INTEGER},
+            </if>
+            <if test="trafficSalary != null">
+                trafficSalary = #{trafficSalary,jdbcType=INTEGER},
+            </if>
+            <if test="allSalary != null">
+                allSalary = #{allSalary,jdbcType=INTEGER},
+            </if>
+            <if test="pensionBase != null">
+                pensionBase = #{pensionBase,jdbcType=INTEGER},
+            </if>
+            <if test="pensionPer != null">
+                pensionPer = #{pensionPer,jdbcType=REAL},
+            </if>
+            <if test="createDate != null">
+                createDate = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="medicalBase != null">
+                medicalBase = #{medicalBase,jdbcType=INTEGER},
+            </if>
+            <if test="medicalPer != null">
+                medicalPer = #{medicalPer,jdbcType=REAL},
+            </if>
+            <if test="accumulationFundBase != null">
+                accumulationFundBase = #{accumulationFundBase,jdbcType=INTEGER},
+            </if>
+            <if test="accumulationFundPer != null">
+                accumulationFundPer = #{accumulationFundPer,jdbcType=REAL},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from salary
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <select id="getAllSalaries" resultType="top.zhengru.vhr.model.Salary">
+        select
+        <include refid="Base_Column_List"/>
+        from salary
+    </select>
+</mapper>

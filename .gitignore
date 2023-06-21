@@ -1,0 +1,4 @@
+/mailserver/src/main/resources/application.properties
+/mailserver/target/classes/application.properties
+/vhrserver/vhr-web/src/main/resources/application.properties
+/vhrserver/vhr-web/target/classes/application.properties

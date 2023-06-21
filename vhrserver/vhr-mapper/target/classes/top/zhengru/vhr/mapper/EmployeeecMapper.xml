@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.zhengru.vhr.mapper.EmployeeecMapper">
+
+    <resultMap id="BaseResultMap" type="top.zhengru.vhr.model.Employeeec">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="eid" column="eid" jdbcType="INTEGER"/>
+            <result property="ecdate" column="ecDate" jdbcType="DATE"/>
+            <result property="ecreason" column="ecReason" jdbcType="VARCHAR"/>
+            <result property="ecpoint" column="ecPoint" jdbcType="INTEGER"/>
+            <result property="ectype" column="ecType" jdbcType="INTEGER"/>
+            <result property="remark" column="remark" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,eid,ecDate,
+        ecReason,ecPoint,ecType,
+        remark
+    </sql>
+</mapper>

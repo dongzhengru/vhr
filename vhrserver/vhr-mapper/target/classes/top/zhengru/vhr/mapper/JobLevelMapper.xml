@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.zhengru.vhr.mapper.JobLevelMapper">
+
+    <resultMap id="BaseResultMap" type="top.zhengru.vhr.model.JobLevel">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="titleLevel" column="titleLevel" jdbcType="VARCHAR"/>
+            <result property="createDate" column="createDate" jdbcType="TIMESTAMP"/>
+            <result property="enabled" column="enabled" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,titleLevel,
+        createDate,enabled
+    </sql>
+    <insert id="addJobLevel">
+        insert into jobLevel(name,titleLevel,createDate,enabled) values(#{name},#{titleLevel},#{createDate},#{enabled})
+    </insert>
+    <update id="updateJobLevelById">
+        update joblevel
+        <set>
+            <if test="name != null" >
+                name = #{name},
+            </if>
+            <if test="titleLevel != null" >
+                titleLevel = #{titleLevel},
+            </if>
+            <if test="createDate != null" >
+                createDate = #{createDate},
+            </if>
+            <if test="enabled != null" >
+                enabled = #{enabled},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    <delete id="deleteJobLevelById">
+        delete from jobLevel where id = #{id};
+    </delete>
+    <delete id="deletePositionByIds">
+        delete from jobLevel where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+    <select id="getAllJobLevels" resultType="top.zhengru.vhr.model.JobLevel">
+        select * from joblevel
+    </select>
+</mapper>

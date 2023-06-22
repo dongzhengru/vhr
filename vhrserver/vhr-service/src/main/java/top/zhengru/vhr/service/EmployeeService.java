@@ -6,8 +6,10 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.zhengru.vhr.mapper.EmployeeMapper;
+import top.zhengru.vhr.mapper.SalaryMapper;
 import top.zhengru.vhr.model.Employee;
 import top.zhengru.vhr.model.RespPageBean;
+import top.zhengru.vhr.model.Salary;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -24,6 +26,8 @@ import java.util.List;
 public class EmployeeService {
     @Autowired
     EmployeeMapper employeeMapper;
+    @Autowired
+    SalaryMapper salaryMapper;
     @Autowired
     RabbitTemplate rabbitTemplate;
     public static final Logger logger = LoggerFactory.getLogger(EmployeeService.class);
@@ -75,5 +79,26 @@ public class EmployeeService {
 
     public Integer addEmps(List<Employee> list) {
         return employeeMapper.addEmps(list);
+    }
+
+    public RespPageBean getEmployeeByPageWithSalary(Integer page, Integer size) {
+        if (page != null && size != null){
+            page = (page - 1) * size;
+        }
+        List<Employee> list = employeeMapper.getEmployeeByPageWithSalary(page,size);
+        RespPageBean respPageBean = new RespPageBean();
+        respPageBean.setData(list);
+        respPageBean.setTotal(employeeMapper.getTotal(null,null));
+        return respPageBean;
+
+
+    }
+
+    public List<Salary> getAllSalaries() {
+        return salaryMapper.getAllSalaries();
+    }
+
+    public Integer updateEmployeeSalaryById(Integer eid, Integer sid) {
+        return employeeMapper.updateEmployeeSalaryById(eid,sid);
     }
 }

@@ -23,6 +23,8 @@ public interface HrMapper {
     Integer updateHr(Hr hr);
 
     Integer deleteHrById(Integer id);
+
+    List<Hr> getAllHrsExceptCurrentHr(Integer id);
 }
 
 

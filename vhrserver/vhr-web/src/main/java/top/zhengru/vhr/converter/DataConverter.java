@@ -13,7 +13,7 @@ import java.util.Date;
  * @Date: 2023/6/19
  * @Time: 20:40
  */
-@Component
+//@Component
 public class DataConverter implements Converter<String,Date> {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     @Override

@@ -39,8 +39,10 @@ public class EmployeeService {
         if (page != null && size != null){
             page = (page - 1) * size;
         }
-        if (employee.getName() != null && employee.getName() != "") {
-            page = 0;
+        if (employee != null) {
+            if (employee.getName() != null && employee.getName() != "") {
+                page = 0;
+            }
         }
         List<Employee> data = employeeMapper.getEmployeeByPage(page,size,employee,beginDateScope);
         Long total = employeeMapper.getTotal(employee,beginDateScope);

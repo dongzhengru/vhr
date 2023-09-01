@@ -19,4 +19,40 @@
         ecReason,ecPoint,ecType,
         remark
     </sql>
+    <select id="getEmployeeEcByPage" resultType="top.zhengru.vhr.vo.EmployeeecVO">
+        select
+            e.name as ecName,
+            p.name as ecPosition,
+            ec.ecDate,
+            ec.ecReason,
+            ec.ecPoint,
+            ec.ecType,
+            ec.remark
+        from
+            employeeec ec,
+            employee e,
+            position p
+        where
+            ec.eid = e.id and
+            e.posId = p.id
+            <if test="keyword != null">
+                and e.name like concat('%',#{keyword},'%')
+            </if>
+            <if test="page != null and size != null">
+                limit
+                #{page}, #{size}
+            </if>
+    </select>
+    <select id="getTotal" resultType="java.lang.Long">
+        select
+            count(*)
+        from
+            employeeec ec,
+            employee e
+        where
+            ec.eid = e.id
+            <if test="keyword != null">
+                and e.name like concat('%',#{keyword},'%')
+            </if>
+    </select>
 </mapper>

@@ -13,7 +13,7 @@ import java.sql.SQLException;
  * @Date: 2023/4/27
  * @Time: 16:11
  */
-@RestControllerAdvice
+//@RestControllerAdvice
 public class GlobalExceptionHandle {
     @ExceptionHandler(SQLException.class)
     public RespBean sqlException(SQLException e){
